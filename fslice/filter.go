@@ -5,7 +5,7 @@ import (
 
 	"github.com/barkimedes/go-deepcopy"
 
-	"github.com/nastvood/cont/slice/util"
+	"github.com/nastvood/cont/fslice/check"
 )
 
 type filterOption func(*filterConfig)
@@ -32,7 +32,7 @@ func Filter(s, fn interface{}, opts ...filterOption) interface{} {
 	}
 
 	elType := reflect.TypeOf(s).Elem()
-	err := util.CheckFuncUnaryPredicate(reflect.TypeOf(fn), elType)
+	err := check.FuncUnaryPredicate(reflect.TypeOf(fn), elType)
 	if err != nil {
 		return s
 	}
@@ -70,7 +70,7 @@ func FilterMap(s, fn interface{}) interface{} {
 	}
 
 	fnType := reflect.TypeOf(fn)
-	err := util.CheckFuncFilterMap(fnType, reflect.TypeOf(s).Elem())
+	err := check.FuncFilterMap(fnType, reflect.TypeOf(s).Elem())
 	if err != nil {
 		return s
 	}

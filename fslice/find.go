@@ -3,7 +3,7 @@ package slice
 import (
 	"reflect"
 
-	"github.com/nastvood/cont/slice/util"
+	"github.com/nastvood/cont/fslice/check"
 )
 
 type findOption func(*findConfig)
@@ -29,7 +29,7 @@ func Find(s, fn interface{}, opts ...findOption) int {
 	}
 
 	elType := reflect.TypeOf(s).Elem()
-	err := util.CheckFuncUnaryPredicate(reflect.TypeOf(fn), elType)
+	err := check.FuncUnaryPredicate(reflect.TypeOf(fn), elType)
 	if err != nil {
 		return -1
 	}

@@ -6,7 +6,7 @@ import (
 
 	"github.com/barkimedes/go-deepcopy"
 
-	"github.com/nastvood/cont/slice/util"
+	"github.com/nastvood/cont/fslice/check"
 )
 
 // Make ...
@@ -47,7 +47,7 @@ func Init(n int, fn interface{}) (interface{}, error) {
 	}
 
 	fnType := reflect.TypeOf(fn)
-	err := util.CheckFuncSliceInit(reflect.TypeOf(fn))
+	err := check.FuncSliceInit(reflect.TypeOf(fn))
 	if err != nil {
 		return nil, err
 	}

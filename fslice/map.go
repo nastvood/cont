@@ -3,7 +3,7 @@ package slice
 import (
 	"reflect"
 
-	"github.com/nastvood/cont/slice/util"
+	"github.com/nastvood/cont/fslice/check"
 )
 
 // Map - apply function fn to elements of slice s.
@@ -18,7 +18,7 @@ func Map(s, fn interface{}) interface{} {
 	}
 
 	fnType := reflect.TypeOf(fn)
-	if err := util.CheckFuncMap(fnType, reflect.TypeOf(s).Elem()); err != nil {
+	if err := check.FuncMap(fnType, reflect.TypeOf(s).Elem()); err != nil {
 		return s
 	}
 
@@ -44,7 +44,7 @@ func Mapi(s, fn interface{}) interface{} {
 	}
 
 	fnType := reflect.TypeOf(fn)
-	if err := util.CheckFuncMapi(fnType, reflect.TypeOf(s).Elem()); err != nil {
+	if err := check.FuncMapi(fnType, reflect.TypeOf(s).Elem()); err != nil {
 		return s
 	}
 

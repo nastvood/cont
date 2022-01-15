@@ -3,7 +3,7 @@ package slice
 import (
 	"reflect"
 
-	"github.com/nastvood/cont/slice/util"
+	"github.com/nastvood/cont/fslice/check"
 )
 
 // ForAll ...
@@ -18,7 +18,7 @@ func ForAll(s, fn interface{}) bool {
 	}
 
 	elType := reflect.TypeOf(s).Elem()
-	err := util.CheckFuncUnaryPredicate(reflect.TypeOf(fn), elType)
+	err := check.FuncUnaryPredicate(reflect.TypeOf(fn), elType)
 	if err != nil {
 		return false
 	}
@@ -49,7 +49,7 @@ func Exists(s, fn interface{}) bool {
 	}
 
 	elType := reflect.TypeOf(s).Elem()
-	err := util.CheckFuncUnaryPredicate(reflect.TypeOf(fn), elType)
+	err := check.FuncUnaryPredicate(reflect.TypeOf(fn), elType)
 	if err != nil {
 		return false
 	}

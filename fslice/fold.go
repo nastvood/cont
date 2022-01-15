@@ -3,7 +3,7 @@ package slice
 import (
 	"reflect"
 
-	"github.com/nastvood/cont/slice/util"
+	"github.com/nastvood/cont/fslice/check"
 )
 
 // Fold ...
@@ -17,7 +17,7 @@ func Fold(s, zero, fn interface{}) interface{} {
 		return zero
 	}
 
-	err := util.CheckFuncFold(reflect.TypeOf(fn), reflect.TypeOf(s).Elem(), reflect.TypeOf(zero))
+	err := check.FuncFold(reflect.TypeOf(fn), reflect.TypeOf(s).Elem())
 	if err != nil {
 		return zero
 	}
