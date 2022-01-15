@@ -1,4 +1,4 @@
-package slice
+package fslice
 
 import (
 	"reflect"
@@ -24,6 +24,28 @@ func TestFold(t *testing.T) {
 				zero: 0,
 				fn: func(v, acc int) int {
 					return v + acc
+				},
+			},
+			want: 0,
+		},
+		{
+			name: "not slice",
+			args: args{
+				s:    1,
+				zero: 0,
+				fn: func(v, acc int) int {
+					return v + acc
+				},
+			},
+			want: 0,
+		},
+		{
+			name: "check err",
+			args: args{
+				s:    []int64{1, 3},
+				zero: 0,
+				fn: func(v bool, acc int) int {
+					return 1 + acc
 				},
 			},
 			want: 0,

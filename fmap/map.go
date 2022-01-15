@@ -1,7 +1,6 @@
 package fmap
 
 import (
-	"fmt"
 	"reflect"
 
 	"github.com/nastvood/cont/fmap/check"
@@ -19,7 +18,6 @@ func Map(m, fn interface{}) interface{} {
 
 	fnType := reflect.TypeOf(fn)
 	if err := check.FuncMap(fnType, reflect.TypeOf(m).Key(), reflect.TypeOf(m).Elem()); err != nil {
-		fmt.Println(err)
 		return m
 	}
 

@@ -1,4 +1,4 @@
-package slice
+package fslice
 
 import (
 	"reflect"
@@ -33,7 +33,15 @@ func TestMap(t *testing.T) {
 			want: nil,
 		},
 		{
-			name: "empty",
+			name: "not slice",
+			args: args{
+				s:  1,
+				fn: func() {},
+			},
+			want: 1,
+		},
+		{
+			name: "check func err",
 			args: args{
 				s:  []int{},
 				fn: func() {},
@@ -140,6 +148,14 @@ func TestMapi(t *testing.T) {
 				fn: func() {},
 			},
 			want: nil,
+		},
+		{
+			name: "not slice",
+			args: args{
+				s:  1,
+				fn: func() {},
+			},
+			want: 1,
 		},
 		{
 			name: "empty",

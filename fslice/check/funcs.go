@@ -28,10 +28,6 @@ func FuncFold(fnType, elemType reflect.Type) error {
 		return errors.NewInTypeError(1, fnType.In(1), fnType.Out(0))
 	}
 
-	// if fnType.Out(0) != foldType {
-	// 	return errors.NewOutTypeError(0, foldType, fnType.Out(0))
-	// }
-
 	return nil
 }
 

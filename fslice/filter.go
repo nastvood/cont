@@ -1,4 +1,4 @@
-package slice
+package fslice
 
 import (
 	"reflect"
@@ -69,13 +69,17 @@ func FilterMap(s, fn interface{}) interface{} {
 		return s
 	}
 
+	val := reflect.ValueOf(s)
+	if val.Kind() != reflect.Slice {
+		return s
+	}
+
 	fnType := reflect.TypeOf(fn)
 	err := check.FuncFilterMap(fnType, reflect.TypeOf(s).Elem())
 	if err != nil {
 		return s
 	}
 
-	val := reflect.ValueOf(s)
 	newS := reflect.MakeSlice(reflect.SliceOf(fnType.Out(0)), 0, 0)
 	for i := 0; i < val.Len(); i++ {
 		res := reflect.ValueOf(fn).Call([]reflect.Value{val.Index(i)})

@@ -1,4 +1,4 @@
-package slice
+package fslice
 
 import (
 	"reflect"
@@ -112,7 +112,6 @@ func TestFilter_DeepCopy(t *testing.T) {
 		args args
 		want interface{}
 	}{
-
 		{
 			name: "nil",
 			args: args{
@@ -122,10 +121,20 @@ func TestFilter_DeepCopy(t *testing.T) {
 			want: nil,
 		},
 		{
+			name: "not slice",
+			args: args{
+				s:  "2",
+				fn: func() {},
+			},
+			want: "2",
+		},
+		{
 			name: "empty",
 			args: args{
-				s:  []int{},
-				fn: func() {},
+				s: []int{},
+				fn: func(i int) bool {
+					return true
+				},
 			},
 			want: []int{},
 		},
@@ -207,6 +216,14 @@ func TestFilterMap(t *testing.T) {
 				fn: func() {},
 			},
 			want: nil,
+		},
+		{
+			name: "not slice",
+			args: args{
+				s:  "2",
+				fn: func() {},
+			},
+			want: "2",
 		},
 		{
 			name: "empty",
