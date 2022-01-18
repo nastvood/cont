@@ -5,7 +5,8 @@ all: test lint
 
 .PHONY: bin-deps
 bin-deps:
-	go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+	go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest && \
+	go get golang.org/x/tools/cmd/cover@latest
 
 
 .PHONY: lint	

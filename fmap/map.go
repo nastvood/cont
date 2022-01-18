@@ -17,7 +17,8 @@ func Map(m, fn interface{}) interface{} {
 	}
 
 	fnType := reflect.TypeOf(fn)
-	if err := check.FuncMap(fnType, reflect.TypeOf(m).Key(), reflect.TypeOf(m).Elem()); err != nil {
+	mType := reflect.TypeOf(m)
+	if err := check.FuncMap(fnType, mType.Key(), mType.Elem()); err != nil {
 		return m
 	}
 
