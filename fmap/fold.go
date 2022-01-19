@@ -22,10 +22,6 @@ func Fold(m, zero, fn interface{}) interface{} {
 		return zero
 	}
 
-	if val.Len() == 0 {
-		return zero
-	}
-
 	res := reflect.ValueOf(zero)
 	iter := val.MapRange()
 	for iter.Next() {

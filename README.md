@@ -47,14 +47,14 @@ func main() {
 	fmt.Printf("%#v\n", intFilterSlice)
 	// Output: []int{6, 7, 8}
 
-	strFilterMapSlice := fslice.FilterMap([]int{1, 2, 3, 4, 5, 6, 7, 8}, func(i int) (string, bool) {
+	strFltMapSlice := fslice.FilterMap([]int{4, 5, 6, 7, 8}, func(i int) (string, bool) {
 		if i > 5 {
 			return "#" + strconv.FormatInt(int64(i*2), 10), true
 		}
 
 		return "", false
 	})
-	fmt.Printf("%#v\n", strFilterMapSlice)
+	fmt.Printf("%#v\n", strFltMapSlice)
 	// Output: []string{"#12", "#14", "#16"}
 }
 ```

@@ -47,7 +47,7 @@ func Init(n int, fn interface{}) (interface{}, error) {
 	}
 
 	fnType := reflect.TypeOf(fn)
-	err := check.FuncSliceInit(reflect.TypeOf(fn))
+	err := check.FuncInit(reflect.TypeOf(fn))
 	if err != nil {
 		return nil, err
 	}
