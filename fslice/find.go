@@ -12,7 +12,7 @@ type findConfig struct {
 	fromRight bool
 }
 
-func WithFinfFromRight() findOption {
+func WithFindFromRight() findOption {
 	return func(c *findConfig) {
 		c.fromRight = true
 	}
