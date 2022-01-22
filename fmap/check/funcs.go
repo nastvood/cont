@@ -25,7 +25,7 @@ func FuncMap(fnType, keyType, valueType reflect.Type) error {
 	}
 
 	if fnType.In(1) != valueType {
-		return errors.NewInTypeError(0, valueType, fnType.In(1))
+		return errors.NewInTypeError(1, valueType, fnType.In(1))
 	}
 
 	return nil
@@ -50,7 +50,7 @@ func FuncFold(fnType, keyType, valueType, zeroType reflect.Type) error {
 	}
 
 	if fnType.In(1) != valueType {
-		return errors.NewInTypeError(0, valueType, fnType.In(1))
+		return errors.NewInTypeError(1, valueType, fnType.In(1))
 	}
 
 	if fnType.Out(0) != fnType.In(2) {

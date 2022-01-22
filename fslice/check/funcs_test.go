@@ -6,7 +6,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	ferrors "github.com/nastvood/cont/errors"
+	cerrors "github.com/nastvood/cont/errors"
 	"github.com/nastvood/cont/internal/pkg/util"
 )
 
@@ -25,7 +25,7 @@ func TestFuncFold(t *testing.T) {
 			args: args{
 				fnType: util.IntType,
 			},
-			wantErr: ferrors.NewNotFuncError(),
+			wantErr: cerrors.NewNotFuncError(),
 		},
 		{
 			name: "num in 2",
@@ -34,7 +34,7 @@ func TestFuncFold(t *testing.T) {
 					return 0
 				}),
 			},
-			wantErr: ferrors.NewNumInError(2),
+			wantErr: cerrors.NewNumInError(2),
 		},
 		{
 			name: "num out 1",
@@ -42,7 +42,7 @@ func TestFuncFold(t *testing.T) {
 				fnType: reflect.TypeOf(func(i int, j int) {
 				}),
 			},
-			wantErr: ferrors.NewNumOutError(1),
+			wantErr: cerrors.NewNumOutError(1),
 		},
 		{
 			name: "in type 0",
@@ -52,7 +52,7 @@ func TestFuncFold(t *testing.T) {
 				}),
 				elemType: util.BoolType,
 			},
-			wantErr: ferrors.NewInTypeError(0, util.BoolType, util.IntType),
+			wantErr: cerrors.NewInTypeError(0, util.BoolType, util.IntType),
 		},
 		{
 			name: "in type 1",
@@ -62,7 +62,7 @@ func TestFuncFold(t *testing.T) {
 				}),
 				elemType: util.IntType,
 			},
-			wantErr: ferrors.NewInTypeError(1, util.BoolType, util.IntType),
+			wantErr: cerrors.NewInTypeError(1, util.BoolType, util.IntType),
 		},
 		{
 			name: "succ",
@@ -105,7 +105,7 @@ func TestFuncMapi(t *testing.T) {
 			args: args{
 				fnType: util.IntType,
 			},
-			wantErr: ferrors.NewNotFuncError(),
+			wantErr: cerrors.NewNotFuncError(),
 		},
 		{
 			name: "num in 2",
@@ -114,7 +114,7 @@ func TestFuncMapi(t *testing.T) {
 					return 0
 				}),
 			},
-			wantErr: ferrors.NewNumInError(2),
+			wantErr: cerrors.NewNumInError(2),
 		},
 		{
 			name: "num out 1",
@@ -122,7 +122,7 @@ func TestFuncMapi(t *testing.T) {
 				fnType: reflect.TypeOf(func(i int, j int) {
 				}),
 			},
-			wantErr: ferrors.NewNumOutError(1),
+			wantErr: cerrors.NewNumOutError(1),
 		},
 		{
 			name: "in type 0",
@@ -132,7 +132,7 @@ func TestFuncMapi(t *testing.T) {
 				}),
 				elemType: util.BoolType,
 			},
-			wantErr: ferrors.NewInTypeError(0, util.IntType, util.BoolType),
+			wantErr: cerrors.NewInTypeError(0, util.IntType, util.BoolType),
 		},
 		{
 			name: "in type 1",
@@ -142,7 +142,7 @@ func TestFuncMapi(t *testing.T) {
 				}),
 				elemType: util.IntType,
 			},
-			wantErr: ferrors.NewInTypeError(1, util.IntType, util.BoolType),
+			wantErr: cerrors.NewInTypeError(1, util.IntType, util.BoolType),
 		},
 		{
 			name: "succ",
@@ -185,7 +185,7 @@ func TestFuncFilterMap(t *testing.T) {
 			args: args{
 				fnType: util.IntType,
 			},
-			wantErr: ferrors.NewNotFuncError(),
+			wantErr: cerrors.NewNotFuncError(),
 		},
 		{
 			name: "num in 1",
@@ -194,7 +194,7 @@ func TestFuncFilterMap(t *testing.T) {
 					return 0
 				}),
 			},
-			wantErr: ferrors.NewNumInError(1),
+			wantErr: cerrors.NewNumInError(1),
 		},
 		{
 			name: "num out 2",
@@ -202,7 +202,7 @@ func TestFuncFilterMap(t *testing.T) {
 				fnType: reflect.TypeOf(func(i int) {
 				}),
 			},
-			wantErr: ferrors.NewNumOutError(2),
+			wantErr: cerrors.NewNumOutError(2),
 		},
 		{
 			name: "in type 0",
@@ -212,7 +212,7 @@ func TestFuncFilterMap(t *testing.T) {
 				}),
 				elemType: util.BoolType,
 			},
-			wantErr: ferrors.NewInTypeError(0, util.BoolType, util.IntType),
+			wantErr: cerrors.NewInTypeError(0, util.BoolType, util.IntType),
 		},
 		{
 			name: "out type 1",
@@ -222,7 +222,7 @@ func TestFuncFilterMap(t *testing.T) {
 				}),
 				elemType: util.IntType,
 			},
-			wantErr: ferrors.NewOutTypeError(1, util.BoolType, util.IntType),
+			wantErr: cerrors.NewOutTypeError(1, util.BoolType, util.IntType),
 		},
 		{
 			name: "succ",
@@ -264,7 +264,7 @@ func TestFuncInit(t *testing.T) {
 			args: args{
 				fnType: util.IntType,
 			},
-			wantErr: ferrors.NewNotFuncError(),
+			wantErr: cerrors.NewNotFuncError(),
 		},
 		{
 			name: "num in 1",
@@ -273,7 +273,7 @@ func TestFuncInit(t *testing.T) {
 					return 0
 				}),
 			},
-			wantErr: ferrors.NewNumInError(1),
+			wantErr: cerrors.NewNumInError(1),
 		},
 		{
 			name: "num out 1",
@@ -281,7 +281,7 @@ func TestFuncInit(t *testing.T) {
 				fnType: reflect.TypeOf(func(i int) {
 				}),
 			},
-			wantErr: ferrors.NewNumOutError(1),
+			wantErr: cerrors.NewNumOutError(1),
 		},
 		{
 			name: "in type 0",
@@ -290,7 +290,7 @@ func TestFuncInit(t *testing.T) {
 					return false
 				}),
 			},
-			wantErr: ferrors.NewInTypeError(0, util.IntType, util.StringType),
+			wantErr: cerrors.NewInTypeError(0, util.IntType, util.StringType),
 		},
 		{
 			name: "succ",
@@ -332,7 +332,7 @@ func TestFuncUnaryPredicate(t *testing.T) {
 			args: args{
 				fnType: util.IntType,
 			},
-			wantErr: ferrors.NewNotFuncError(),
+			wantErr: cerrors.NewNotFuncError(),
 		},
 		{
 			name: "num in 1",
@@ -341,7 +341,7 @@ func TestFuncUnaryPredicate(t *testing.T) {
 					return 0
 				}),
 			},
-			wantErr: ferrors.NewNumInError(1),
+			wantErr: cerrors.NewNumInError(1),
 		},
 		{
 			name: "num out 1",
@@ -349,7 +349,7 @@ func TestFuncUnaryPredicate(t *testing.T) {
 				fnType: reflect.TypeOf(func(i int) {
 				}),
 			},
-			wantErr: ferrors.NewNumOutError(1),
+			wantErr: cerrors.NewNumOutError(1),
 		},
 		{
 			name: "in type 0",
@@ -359,7 +359,7 @@ func TestFuncUnaryPredicate(t *testing.T) {
 				}),
 				elemType: util.BoolType,
 			},
-			wantErr: ferrors.NewInTypeError(0, util.BoolType, util.IntType),
+			wantErr: cerrors.NewInTypeError(0, util.BoolType, util.IntType),
 		},
 		{
 			name: "out type 0",
@@ -369,7 +369,7 @@ func TestFuncUnaryPredicate(t *testing.T) {
 				}),
 				elemType: util.IntType,
 			},
-			wantErr: ferrors.NewOutTypeError(0, util.BoolType, util.IntType),
+			wantErr: cerrors.NewOutTypeError(0, util.BoolType, util.IntType),
 		},
 		{
 			name: "succ",
@@ -412,7 +412,7 @@ func TestFuncMap(t *testing.T) {
 			args: args{
 				fnType: util.IntType,
 			},
-			wantErr: ferrors.NewNotFuncError(),
+			wantErr: cerrors.NewNotFuncError(),
 		},
 		{
 			name: "num in 1",
@@ -421,7 +421,7 @@ func TestFuncMap(t *testing.T) {
 					return 0
 				}),
 			},
-			wantErr: ferrors.NewNumInError(1),
+			wantErr: cerrors.NewNumInError(1),
 		},
 		{
 			name: "num out 1",
@@ -429,7 +429,7 @@ func TestFuncMap(t *testing.T) {
 				fnType: reflect.TypeOf(func(i int) {
 				}),
 			},
-			wantErr: ferrors.NewNumOutError(1),
+			wantErr: cerrors.NewNumOutError(1),
 		},
 		{
 			name: "in type 0",
@@ -439,7 +439,7 @@ func TestFuncMap(t *testing.T) {
 				}),
 				elemType: util.BoolType,
 			},
-			wantErr: ferrors.NewInTypeError(0, util.BoolType, util.IntType),
+			wantErr: cerrors.NewInTypeError(0, util.BoolType, util.IntType),
 		},
 		{
 			name: "succ",

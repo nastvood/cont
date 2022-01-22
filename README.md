@@ -19,10 +19,6 @@ import (
 )
 
 func main() {
-	intMakeSlice, _ := fslice.Make(10, 5)
-	fmt.Printf("%#v\n", intMakeSlice)
-	// Output: []int{5, 5, 5, 5, 5, 5, 5, 5, 5, 5}
-
 	strMakeSlice, _ := fslice.Make(10, "5")
 	fmt.Printf("%#v\n", strMakeSlice)
 	// Output: []string{"5", "5", "5", "5", "5", "5", "5", "5", "5", "5"}

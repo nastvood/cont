@@ -52,11 +52,11 @@ func Filter(s, fn interface{}, opts ...filterOption) interface{} {
 		if v.Bool() {
 			if config.deepCopy {
 				newEl := deepcopy.MustAnything(val.Index(i).Interface())
-
 				newS = reflect.Append(newS, reflect.ValueOf(newEl))
-			} else {
-				newS = reflect.Append(newS, val.Index(i))
+				continue
 			}
+
+			newS = reflect.Append(newS, val.Index(i))
 		}
 	}
 
