@@ -1,7 +1,6 @@
 package check
 
 import (
-	"fmt"
 	"reflect"
 
 	"github.com/nastvood/cont/errors"
@@ -36,7 +35,6 @@ func FuncFold(fnType, keyType, valueType, zeroType reflect.Type) error {
 		return errors.NewNotFuncError()
 	}
 
-	fmt.Println(fnType.NumIn())
 	if fnType.NumIn() != 3 {
 		return errors.NewNumInError(3)
 	}
