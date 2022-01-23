@@ -1,3 +1,5 @@
+# cont [![Go Reference](https://godoc.org/github.com/nastvood/cont/assets/badge.svg)](https://pkg.go.dev/github.com/nastvood/cont)
+
 ## Installation
 
 ```bash

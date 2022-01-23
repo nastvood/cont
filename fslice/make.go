@@ -9,7 +9,7 @@ import (
 	"github.com/nastvood/cont/fslice/check"
 )
 
-// Make ...
+// Make - func(n, x) returns a slice containing n elements x.
 func Make(n int, el interface{}) (interface{}, error) {
 	if n < 0 {
 		return nil, errors.New("n is negative")
@@ -40,7 +40,7 @@ func Make(n int, el interface{}) (interface{}, error) {
 	return newS.Interface(), nil
 }
 
-// Init ...
+// Init - func(n, fn) returns the slice containing the results of {fn(0), fn(1), ..., fn(n-1)).
 func Init(n int, fn interface{}) (interface{}, error) {
 	if n < 0 {
 		return nil, errors.New("negative n")

@@ -6,7 +6,7 @@ import (
 	"github.com/nastvood/cont/fslice/check"
 )
 
-// Fold ...
+// Fold - func({s0, s1, ..., sn}, a, fn) is fn(sn, fn(..., fn(s1, fn(s0, a)))).
 func Fold(s, zero, fn interface{}) interface{} {
 	if s == nil {
 		return zero

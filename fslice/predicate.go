@@ -6,7 +6,8 @@ import (
 	"github.com/nastvood/cont/fslice/check"
 )
 
-// ForAll ...
+// ForAll - func({s0, s1, ..., sn}, fn) checks if all elements of the slice satisfy the predicate fn.
+// That is, it returns fn(s0) && fn(s1) && ... && fn(sn).
 func ForAll(s, fn interface{}) bool {
 	if s == nil {
 		return true
@@ -37,7 +38,8 @@ func ForAll(s, fn interface{}) bool {
 	return true
 }
 
-// Exists ...
+// Exists - func({s0, s1, ..., sn}, fn) checks if at least one element of the slice satisfies the predicate fn.
+// That is, it returns fn(s0) || fn(s1) || ... || fn(sn).
 func Exists(s, fn interface{}) bool {
 	if s == nil {
 		return false

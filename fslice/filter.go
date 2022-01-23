@@ -20,7 +20,8 @@ func WithFilterDeepCopy() filterOption {
 	}
 }
 
-// Filter ...
+// Filter - func({s0, s1, ..., sn}, fn) returns all the elements of the slice s that
+// satisfy the predicate fn.
 func Filter(s, fn interface{}, opts ...filterOption) interface{} {
 	if s == nil {
 		return s
@@ -63,7 +64,8 @@ func Filter(s, fn interface{}, opts ...filterOption) interface{} {
 	return newS.Interface()
 }
 
-// FilterMap ...
+// FilterMap - func({s0, s1, ..., sn}, fn) calls fn(s0), fn(s1), ..., fn(sn). It returns the slice of elements bi
+// such as b1, ok := fn(si) (when ok is false, the corresponding element of s is discarded).
 func FilterMap(s, fn interface{}) interface{} {
 	if s == nil {
 		return s

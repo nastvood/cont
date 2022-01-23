@@ -6,7 +6,8 @@ import (
 	"github.com/nastvood/cont/fslice/check"
 )
 
-// Map - apply function fn to elements of slice s.
+// Map - func({s0, s1, ..., sn}, fn), applies function fn to s0, s1, ..., sn
+// and builds the slice {fn(a0), fn(a1), ..., fn(an)} with the results returned by fn.
 func Map(s, fn interface{}) interface{} {
 	if s == nil {
 		return s
@@ -32,7 +33,8 @@ func Map(s, fn interface{}) interface{} {
 	return newS.Interface()
 }
 
-// Mapi ...
+// Mapi - func({s0, s1, ..., sn}, fn) will build the slice containing
+// {fn(0, s0), fn(1, s1), ..., fn(n, sn)} where s0..sn are the elements of the slice s.
 func Mapi(s, fn interface{}) interface{} {
 	if s == nil {
 		return s
