@@ -1,4 +1,4 @@
-# cont [![Go Reference](https://godoc.org/github.com/nastvood/cont/assets/badge.svg)](https://pkg.go.dev/github.com/nastvood/cont)
+# cont [![Go Reference](https://pkg.go.dev/badge/github.com/nastvood/cont.svg)](https://pkg.go.dev/github.com/nastvood/cont)
 
 ## Installation
 
