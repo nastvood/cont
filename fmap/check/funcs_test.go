@@ -176,17 +176,18 @@ func TestFuncFold(t *testing.T) {
 			},
 			wantErr: cerrors.NewOutTypeError(0, util.StringType, util.Float64Type),
 		},
-		/*{
+		{
 			name: "succ",
 			args: args{
-				fnType: reflect.TypeOf(func(k int, v bool) (int, bool) {
-					return k, v
+				fnType: reflect.TypeOf(func(k int, v bool, acc float64) float64 {
+					return 0.0
 				}),
 				keyType:   util.IntType,
 				valueType: util.BoolType,
+				zeroType:  util.Float64Type,
 			},
 			wantErr: nil,
-		},*/
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

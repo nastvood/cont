@@ -24,7 +24,6 @@ func TestFilter(t *testing.T) {
 		args args
 		want interface{}
 	}{
-
 		{
 			name: "nil",
 			args: args{

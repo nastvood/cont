@@ -18,8 +18,8 @@ func WithFindFromRight() findOption {
 	}
 }
 
-// Find - fun({s0, s1, ..., sn}, fn) returns the first element of the slice s
-// that satisfies the predicate fn.
+// Find - fun({s0, s1, ..., sn}, fn) returns the index of first element of the slice s
+// that satisfies the predicate fn. If element not found returns -1.
 func Find(s, fn interface{}, opts ...findOption) int {
 	if s == nil {
 		return -1
