@@ -41,7 +41,7 @@ func Values(m interface{}, opts ...valuesOption) interface{} {
 	iter := val.MapRange()
 	for iter.Next() {
 		if config.deepCopy {
-			newEl := deepcopy.MustAnything(iter.Key().Interface())
+			newEl := deepcopy.MustAnything(iter.Value().Interface())
 			values = reflect.Append(values, reflect.ValueOf(newEl))
 			continue
 		}

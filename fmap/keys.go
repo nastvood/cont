@@ -2,23 +2,9 @@ package fmap
 
 import (
 	"reflect"
-
-	"github.com/barkimedes/go-deepcopy"
 )
 
-type keysOption func(*keysConfig)
-
-type keysConfig struct {
-	deepCopy bool
-}
-
-func WithKeysDeepCopy() keysOption {
-	return func(config *keysConfig) {
-		config.deepCopy = true
-	}
-}
-
-func Keys(m interface{}, opts ...keysOption) interface{} {
+func Keys(m interface{}) interface{} {
 	if m == nil {
 		return m
 	}
@@ -33,19 +19,8 @@ func Keys(m interface{}, opts ...keysOption) interface{} {
 		return keys.Interface()
 	}
 
-	config := &keysConfig{}
-	for _, opt := range opts {
-		opt(config)
-	}
-
 	iter := val.MapRange()
 	for iter.Next() {
-		if config.deepCopy {
-			newEl := deepcopy.MustAnything(iter.Key().Interface())
-			keys = reflect.Append(keys, reflect.ValueOf(newEl))
-			continue
-		}
-
 		keys = reflect.Append(keys, iter.Key())
 	}
 
