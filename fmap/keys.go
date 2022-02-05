@@ -4,6 +4,8 @@ import (
 	"reflect"
 )
 
+// Keys return an slice of all the keys of a map.
+// Got slice that is not sorted.
 func Keys(m interface{}) interface{} {
 	if m == nil {
 		return m

@@ -18,6 +18,7 @@ func WithValuesDeepCopy() valuesOption {
 	}
 }
 
+// Values return an slice of all the values of a map.
 func Values(m interface{}, opts ...valuesOption) interface{} {
 	if m == nil {
 		return m

@@ -6,6 +6,7 @@ import (
 	"github.com/nastvood/cont/fmap/check"
 )
 
+// Map - creates a new map with the new key,value = fn(old_key,old_value).
 func Map(m, fn interface{}) interface{} {
 	if m == nil {
 		return m
