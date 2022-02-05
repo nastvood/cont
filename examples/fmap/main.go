@@ -48,4 +48,15 @@ func main() {
 	})
 	fmt.Printf("%#v\n", valuesMap)
 	// Output: []string{"3", "1", "2"}
+
+	filterMap := fmap.Filter(map[string]int64{
+		"1":   1,
+		"two": 2,
+		"3":   3,
+	}, func(k string, v int64) bool {
+		_, err := strconv.ParseInt(k, 10, 64)
+		return err == nil
+	})
+	fmt.Printf("%#v\n", filterMap)
+	// Output: map[string]int64{"1":1, "3":3}
 }

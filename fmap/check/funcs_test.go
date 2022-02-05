@@ -203,3 +203,98 @@ func TestFuncFold(t *testing.T) {
 		})
 	}
 }
+
+func TestFuncUnaryPredicate(t *testing.T) {
+	type args struct {
+		fnType    reflect.Type
+		keyType   reflect.Type
+		valueType reflect.Type
+	}
+	tests := []struct {
+		name    string
+		args    args
+		wantErr error
+	}{
+		{
+			name: "not func",
+			args: args{
+				fnType: util.IntType,
+			},
+			wantErr: cerrors.NewNotFuncError(),
+		},
+		{
+			name: "num in 2",
+			args: args{
+				fnType: reflect.TypeOf(func(i int) int {
+					return 0
+				}),
+			},
+			wantErr: cerrors.NewNumInError(2),
+		},
+		{
+			name: "num out 1",
+			args: args{
+				fnType: reflect.TypeOf(func(i int, b bool) (int, error) {
+					return 0, nil
+				}),
+			},
+			wantErr: cerrors.NewNumOutError(1),
+		},
+		{
+			name: "in type 0",
+			args: args{
+				fnType: reflect.TypeOf(func(k int, v bool) bool {
+					return true
+				}),
+				keyType: util.BoolType,
+			},
+			wantErr: cerrors.NewInTypeError(0, util.BoolType, util.IntType),
+		},
+		{
+			name: "in type 1",
+			args: args{
+				fnType: reflect.TypeOf(func(k int, v bool) bool {
+					return true
+				}),
+				keyType:   util.IntType,
+				valueType: util.IntType,
+			},
+			wantErr: cerrors.NewInTypeError(1, util.IntType, util.BoolType),
+		},
+		{
+			name: "out type 0",
+			args: args{
+				fnType: reflect.TypeOf(func(k int, v bool) string {
+					return ""
+				}),
+				keyType:   util.IntType,
+				valueType: util.BoolType,
+			},
+			wantErr: cerrors.NewOutTypeError(0, util.BoolType, util.StringType),
+		},
+		{
+			name: "succ",
+			args: args{
+				fnType: reflect.TypeOf(func(k int, v bool) bool {
+					return true
+				}),
+				keyType:   util.IntType,
+				valueType: util.BoolType,
+			},
+			wantErr: nil,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			err := FuncUnaryPredicate(tt.args.fnType, tt.args.keyType, tt.args.valueType)
+			if err != nil && tt.wantErr == nil ||
+				err == nil && tt.wantErr != nil {
+				require.Failf(t, "err", "err is nil (%t), wantErr is nil (%t)", err == nil, tt.wantErr == nil)
+			}
+
+			if err != nil || tt.wantErr != nil {
+				require.EqualError(t, err, tt.wantErr.Error())
+			}
+		})
+	}
+}

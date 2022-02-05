@@ -7,6 +7,7 @@ import (
 	"github.com/nastvood/cont/internal/pkg/util"
 )
 
+// FuncFold for Fold function.
 func FuncFold(fnType, elemType reflect.Type) error {
 	if fnType.Kind() != reflect.Func {
 		return errors.NewNotFuncError()
@@ -31,6 +32,7 @@ func FuncFold(fnType, elemType reflect.Type) error {
 	return nil
 }
 
+// FuncMapi for Mapi function.
 func FuncMapi(fnType, elemType reflect.Type) error {
 	if fnType.Kind() != reflect.Func {
 		return errors.NewNotFuncError()
@@ -55,6 +57,7 @@ func FuncMapi(fnType, elemType reflect.Type) error {
 	return nil
 }
 
+// FuncFilterMap for FilterMap function.
 func FuncFilterMap(fnType, elemType reflect.Type) error {
 	if fnType.Kind() != reflect.Func {
 		return errors.NewNotFuncError()
@@ -79,6 +82,7 @@ func FuncFilterMap(fnType, elemType reflect.Type) error {
 	return nil
 }
 
+// FuncInit for Init function.
 func FuncInit(fnType reflect.Type) error {
 	if fnType.Kind() != reflect.Func {
 		return errors.NewNotFuncError()
@@ -99,6 +103,7 @@ func FuncInit(fnType reflect.Type) error {
 	return nil
 }
 
+// FuncUnaryPredicate for Filter, Find, ForAll, Exists functions.
 func FuncUnaryPredicate(fnType, elemType reflect.Type) error {
 	if fnType.Kind() != reflect.Func {
 		return errors.NewNotFuncError()
