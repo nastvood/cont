@@ -7,7 +7,7 @@ import (
 	"github.com/stretchr/testify/require"
 
 	cerrors "github.com/nastvood/cont/errors"
-	"github.com/nastvood/cont/internal/pkg/util"
+	"github.com/nastvood/cont/internal/util"
 )
 
 func TestFuncMap(t *testing.T) {

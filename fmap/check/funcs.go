@@ -4,7 +4,7 @@ import (
 	"reflect"
 
 	"github.com/nastvood/cont/errors"
-	"github.com/nastvood/cont/internal/pkg/util"
+	"github.com/nastvood/cont/internal/util"
 )
 
 // FuncMap for Map function.

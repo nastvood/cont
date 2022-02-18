@@ -5,7 +5,7 @@ import (
 	"strconv"
 	"testing"
 
-	"github.com/nastvood/cont/internal/pkg/util"
+	"github.com/nastvood/cont/internal/util"
 )
 
 func TestMake(t *testing.T) {

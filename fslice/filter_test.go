@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/nastvood/cont/internal/pkg/util"
+	"github.com/nastvood/cont/internal/util"
 )
 
 func TestFilter(t *testing.T) {

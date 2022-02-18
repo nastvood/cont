@@ -6,6 +6,7 @@ import (
 	"github.com/nastvood/cont/fmap/check"
 )
 
+// Fold - func(m, a, fn) is fn(kn, vn, fn(..., fn(k1, v2, fn(k0, v0, a)))).
 func Fold(m, zero, fn interface{}) interface{} {
 	if m == nil {
 		return zero
